@@ -4,12 +4,12 @@ module.exports = {
     name: 'owner',
     description: 'Bot owner info',
     execute(message, args) {
-        const youtubeLink = 'https://discord.gg/FUEHs7RCqz';
-        const InstagramLink = 'https://discord.gg/FUEHs7RCqz';
+        const DiscordLink = 'https://discord.com/users/267958390389604362';
+        const DiscordGuild = 'https://discord.gg/X6RT5VdJPQ';
         const embed = new EmbedBuilder()
             .setColor('#FFFFFF')
             .setTitle(' 🫅 Owner Info')
-            .setDescription(`__**About me**__:\n 🤖 Myself Shiva aka RTX. I am a discord bot developer and web developer. I love playing games, watching anime and building different webserver applications. You will get faster replies on instagram than other social media. Feel free to contact me!\n ❤️ [RTX GAMING](${youtubeLink})\n 💙 [Atstreak](${InstagramLink})`)
+            .setDescription(`__**About me**__:\n 🤖 My name is Muhammad Aqil Ismail, and I am a man who lost his own purposes in life.\n ❤️ [BlankedWave](${DiscordLink})\n 💙 [Discord Sebelah](${DiscordGuild})`)
             .setTimestamp();
 
 
