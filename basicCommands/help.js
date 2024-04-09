@@ -17,7 +17,7 @@ module.exports = {
         url: 'https://discordapp.com/users/267958390389604362'
     })
      
-      .setDescription(`__**STATS :**__\n\n> **📊 Bot in servers:** ${serverCount}\n> **🟢 Bot Ping:** ${botPing}ms\n> **👑 Made By BlankedWave**\n\n__**COMMANDS :**__ `)
+      .setDescription(`__**STATS :**__\n\n> **📊 Bot in servers:** ${serverCount}\n> **🟢 Bot Ping:** ${botPing}ms\n> **👑 Made By [BlankedWave](https://discordapp.com/users/267958390389604362)**\n\n__**COMMANDS :**__ `)
       .addFields(
         // Basic commands category
         {
