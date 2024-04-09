@@ -14,10 +14,10 @@ module.exports = {
       .setAuthor({
         name: 'Im here to Help!',
         iconURL: 'https://cdn.discordapp.com/attachments/1175487983915376662/1175667506791325706/communication.png?ex=656c10b0&is=65599bb0&hm=e378f1b355a2401bcab504b08a0766001d6b7c090c91ce0a7a7a87c868feb955&', 
-        url: 'https://discord.gg/FUEHs7RCqz'
+        url: 'https://discordapp.com/users/267958390389604362'
     })
      
-      .setDescription(`__**STATS :**__\n\n> **📊 Bot in servers:** ${serverCount}\n> **🟢 Bot Ping:** ${botPing}ms\n> **👑 Made By [RTX](https://www.youtube.com/channel/UCPbAvYWBgnYhliJa1BIrv0A)**\n\n__**COMMANDS :**__ `)
+      .setDescription(`__**STATS :**__\n\n> **📊 Bot in servers:** ${serverCount}\n> **🟢 Bot Ping:** ${botPing}ms\n> **👑 Made By BlankedWave**\n\n__**COMMANDS :**__ `)
       .addFields(
         // Basic commands category
         {
@@ -57,21 +57,21 @@ module.exports = {
         }
       )
       .setThumbnail(botUser.avatarURL({ dynamic: true, format: 'png', size: 1024 }))
-      .setImage(`https://cdn.discordapp.com/attachments/1170652474563117138/1224660177039396876/MULTI_MUSIC_v1.5.png?ex=661e4cab&is=660bd7ab&hm=f7a542462fabaf9c1530ece5aa72597cff3ac032876bba46df5ddba7e122ea99&`);
+      .setImage(`https://cdn.discordapp.com/avatars/1166579917576740905/ff6612659d33718880e9373e757b02d8.webp?size=1024`);
 
     const button1 = new ButtonBuilder()
-      .setLabel('YouTube')
-      .setURL('https://www.youtube.com/channel/UCPbAvYWBgnYhliJa1BIrv0A')
+      .setLabel('Discord')
+      .setURL('https://discordapp.com/users/267958390389604362')
       .setStyle(ButtonStyle.Link);
 
     const button2 = new ButtonBuilder()
-      .setLabel('Discord')
-      .setURL('https://discord.gg/FUEHs7RCqz')
+      .setLabel('Discord Channel')
+      .setURL('https://discord.gg/X6RT5VdJPQ')
       .setStyle(ButtonStyle.Link);
 
     const button3 = new ButtonBuilder()
-      .setLabel('Code')
-      .setURL('https://replit.com/@BEASTGAMERS1/MULTI-MUSIC-BOT-v200?v=1')
+      .setLabel('Easter Egg')
+      .setURL('https://www.youtube.com/watch?v=67p1sOD4e2A')
       .setStyle(ButtonStyle.Link);
       
     const row = new ActionRowBuilder()
