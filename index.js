@@ -144,8 +144,8 @@ client.once('ready', () => {
   setTimeout(() => {
     console.log('\x1b[32m%s\x1b[0m', `|    🎯 Activity sucessfully set!`);
     client.user.setPresence({
-      activities: [{ name: `Update Out V@1.5`, type: ActivityType.Watching }],
-      status: 'idle',
+      activities: [{ name: `Lagu Popular Yang Terkini!`, type: ActivityType.Streaming }],
+      status: 'online',
     });
   }, 2000); 
 });
