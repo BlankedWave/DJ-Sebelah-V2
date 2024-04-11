@@ -32,6 +32,8 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setColor('#00FF00')
       .setDescription('**✅ Music playback stopped and queue cleared.**');
-    return message.reply({ embeds: [embed] });
+    const replyMessage = await message.reply({ embeds: [embed] });
+
+    return replyMessage;
   },
 };
