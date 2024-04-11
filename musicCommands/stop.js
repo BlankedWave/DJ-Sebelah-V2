@@ -1,17 +1,25 @@
 const { VoiceConnectionStatus } = require('@discordjs/voice');
+const { EmbedBuilder } = require('discord.js');
+const { getCurrentConnection } = require('./play');
 
 module.exports = {
   name: 'stop',
   description: 'Stop the music playback',
   execute: async (message, args) => {
-    const connection = message.client.getCurrentConnection();
+    const connection = getCurrentConnection();
 
     if (!connection || connection.state.status === VoiceConnectionStatus.Destroyed) {
-      return message.reply('**❌ There is no active connection to stop.**');
+      const embed = new EmbedBuilder()
+        .setColor('#FF0000')
+        .setDescription('**❌ There is no active connection to stop.**');
+      return message.reply({ embeds: [embed] });
     }
 
     if (message.member.voice.channelId !== connection.joinConfig.channelId) {
-      return message.reply('**❌ You need to be in the same voice channel as the bot to stop the music.**');
+      const embed = new EmbedBuilder()
+        .setColor('#FF0000')
+        .setDescription('**❌ You need to be in the same voice channel as the bot to stop the music.**');
+      return message.reply({ embeds: [embed] });
     }
 
     // Clear the queue
@@ -21,6 +29,9 @@ module.exports = {
     connection.destroy();
 
     // Inform user
-    return message.reply('**✅ Music playback stopped and queue cleared.**');
+    const embed = new EmbedBuilder()
+      .setColor('#00FF00')
+      .setDescription('**✅ Music playback stopped and queue cleared.**');
+    return message.reply({ embeds: [embed] });
   },
 };
