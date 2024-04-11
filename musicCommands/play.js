@@ -361,7 +361,6 @@ module.exports = {
 //addition
 // Inside play.js
 // Import necessary dependencies
-const { VoiceConnectionStatus } = require('@discordjs/voice');
 
 // Define the getCurrentConnection function
 function getCurrentConnection() {
