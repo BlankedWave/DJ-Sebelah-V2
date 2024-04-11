@@ -8,7 +8,7 @@ module.exports = {
   execute: async (message, args) => {
     const connection = getCurrentConnection();
 
-    if (!connection || connection.state.status === VoiceConnectionStatus.Destroyed) {
+    if (!connection || connection.state.status !== VoiceConnectionStatus.Ready) {
       const embed = new EmbedBuilder()
         .setColor('#FF0000')
         .setDescription('**❌ There is no active connection to stop.**');
