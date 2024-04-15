@@ -52,7 +52,7 @@ async function displayQueue(message) {
           iconURL: 'https://cdn.discordapp.com/attachments/1223544847047065662/1224631171766292500/9596-wrong.gif?ex=661e31a7&is=660bbca7&hm=0176645a3d582d6b93c8447a02cd7b1e7923b316212336fdc0b23b96b5e8ab4b&',
           url: 'https://discord.gg/X6RT5VdJPQ'
         })
-      .setDescription('**Senarai main adalah kosong, sila tambah lagu.**')
+      .setDescription('**Senarai main kosong, sila tambah lagu.**')
       .setColor('#ff0000');
     return message.reply({ embeds: [embed] });
   }
@@ -148,7 +148,7 @@ async function playSong(connection, searchQuery, message) {
           .setStyle(ButtonStyle.Primary),
         new ButtonBuilder()
           .setCustomId('skip')
-          .setLabel('Lewat')
+          .setLabel('Langkau')
           .setEmoji('⏭️')
           .setStyle(ButtonStyle.Primary),
         new ButtonBuilder()  
@@ -191,7 +191,7 @@ async function playSong(connection, searchQuery, message) {
             const embed = new EmbedBuilder()
               .setColor('#2b71ec')
               .setAuthor({
-                name: 'Lagu Dilewati!',
+                name: 'Lagu Dilangkau!',
                 iconURL: 'https://cdn.discordapp.com/attachments/1175488636033175602/1175488721253052426/right-chevron-.png?ex=656b6a2e&is=6558f52e&hm=50647a73aa51cb35f25eba52055c7b4a1b56bbf3a6d13adc15b52dc533236956&',
                 url: 'https://discord.gg/X6RT5VdJPQ'
               })
@@ -284,7 +284,6 @@ function resumePlayback() {
 
 module.exports = {
   name: 'play',
-  aliases: ['p', 'main'],
   description: 'Mainkan muzik dari YouTube',
   execute: async (message, args) => {
     const voiceChannel = message.member.voice.channel;
