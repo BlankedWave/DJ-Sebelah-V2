@@ -11,7 +11,7 @@ module.exports = {
     if (!voiceChannel) {
       const embed = new EmbedBuilder()
         .setColor('#FF0000')
-        .setDescription('🐼 Anda perlu berada dalam saluran suara untuk menggunakan arahan ini!');
+        .setDescription('🐼 Anda perlu berada dalam saluran suara untuk menggunakan command ini!');
       return message.reply({ embeds: [embed] });
     }
 
