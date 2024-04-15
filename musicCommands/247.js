@@ -1,7 +1,4 @@
-const {
-  joinVoiceChannel,
-  VoiceConnectionStatus,
-} = require('@discordjs/voice');
+const { joinVoiceChannel, VoiceConnectionStatus } = require('@discordjs/voice');
 const { EmbedBuilder } = require('discord.js');
 
 const connections = new Map();
@@ -9,14 +6,14 @@ const reconnectIntervals = new Map();
 
 module.exports = {
   name: '247',
-  description: 'Set or unset a 24/7 radio channel for the bot',
+  description: 'Tetapkan atau nyahtetapkan saluran radio 24/7 untuk bot',
   execute: async (message, args) => {
     const voiceChannel = message.member.voice.channel;
 
     if (!voiceChannel) {
       const embed = new EmbedBuilder()
         .setColor('#FF0000')
-        .setDescription('Join The channel You want to keep bot 24/7!');
+        .setDescription('Sertai Saluran Yang Anda Ingin Simpan Bot 24/7!');
 
       return message.reply({ embeds: [embed] });
     }
@@ -38,11 +35,11 @@ module.exports = {
       const leaveEmbed = new EmbedBuilder()
         .setColor('#FF0000')
             .setAuthor({
-          name: '24/7 DeActivated!',
+          name: '24/7 Dihentikan!',
           iconURL: 'https://cdn.discordapp.com/attachments/1175488636033175602/1175524927164645446/cross.png?ex=656b8be6&is=655916e6&hm=ff3bbc16f174e02e38a61c8ec86d2e6c44a2b8785147dcfe111bf06054cb05fe&',
-          url: 'https://discord.gg/FUEHs7RCqz'
+          url: 'https://discord.gg/X6RT5VdJPQ'
         })
-            .setDescription('**Increase Cooldown to stay 24/7 for a long time!**');
+            .setDescription('**Tingkatkan Jangka Waktu Agar Bot Disimpan 24/7 Untuk Jangka Masa Yang Lama!**');
 
       return message.reply({ embeds: [leaveEmbed] });
     } else {
@@ -63,11 +60,11 @@ module.exports = {
           const leaveEmbed = new EmbedBuilder()
               .setColor('#FF0000')
             .setAuthor({
-          name: '24/7 DeActivated!',
+          name: '24/7 Dihentikan!',
           iconURL: 'https://cdn.discordapp.com/attachments/1175488636033175602/1175524927164645446/cross.png?ex=656b8be6&is=655916e6&hm=ff3bbc16f174e02e38a61c8ec86d2e6c44a2b8785147dcfe111bf06054cb05fe&',
-          url: 'https://discord.gg/FUEHs7RCqz'
+          url: 'https://discord.gg/X6RT5VdJPQ'
         })
-            .setDescription('**Increase Cooldown to stay 24/7 for a long time!**');
+            .setDescription('**Tingkatkan Jangka Waktu Agar Bot Disimpan 24/7 Untuk Jangka Masa Yang Lama!**');
 
           message.reply({ embeds: [leaveEmbed] });
         }, 600000); 
@@ -77,11 +74,11 @@ module.exports = {
         const embed = new EmbedBuilder()
            .setColor('#2b71ec')
      .setAuthor({
-          name: '24/7 Activated!',
+          name: '24/7 Diaktifkan!',
           iconURL: 'https://cdn.discordapp.com/attachments/1175488636033175602/1175524855140057209/check.png?ex=656b8bd5&is=655916d5&hm=75eb1b1f6731b0d6bdec686677d5a86f359f4a5acbbd58751d35ec26d852aaa6&',
-          url: 'https://discord.gg/FUEHs7RCqz'
+          url: 'https://discord.gg/X6RT5VdJPQ'
         })
-          .setDescription('**You need to deactivate 24/7 to play songs!**');
+          .setDescription('**Anda perlu menyahaktifkan 24/7 untuk memainkan lagu!**');
 
         message.reply({ embeds: [embed] });
       });
