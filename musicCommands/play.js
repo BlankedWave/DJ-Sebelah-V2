@@ -1,4 +1,3 @@
-
 const {
   joinVoiceChannel,
   createAudioPlayer,
@@ -25,8 +24,8 @@ const youtubeSearchOptions = {
 
 const queue = [];
 let player;
-let currentConnection; 
-let currentMessage; 
+let currentConnection;
+let currentMessage;
 function createPlayer() {
   if (!player) {
     player = createAudioPlayer();
@@ -47,13 +46,13 @@ function dequeue() {
 }
 async function displayQueue(message) {
   if (queue.length === 0) {
-     const embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setAuthor({
-          name: 'Attention',
+          name: 'Perhatian',
           iconURL: 'https://cdn.discordapp.com/attachments/1223544847047065662/1224631171766292500/9596-wrong.gif?ex=661e31a7&is=660bbca7&hm=0176645a3d582d6b93c8447a02cd7b1e7923b316212336fdc0b23b96b5e8ab4b&',
-          url: 'https://discord.gg/FUEHs7RCqz'
+          url: 'https://discord.gg/X6RT5VdJPQ'
         })
-      .setDescription('**The Queue is currently empty consider adding songs.**')
+      .setDescription('**Senarai main adalah kosong, sila tambah lagu.**')
       .setColor('#ff0000');
     return message.reply({ embeds: [embed] });
   }
@@ -61,9 +60,9 @@ async function displayQueue(message) {
   const embed = new EmbedBuilder()
     .setColor('#2b71ec')
     .setAuthor({
-      name: 'Queue',
+      name: 'Senarai Main',
       iconURL: 'https://cdn.discordapp.com/attachments/1175488636033175602/1175488721001398333/queue.png?ex=656b6a2e&is=6558f52e&hm=7b4492b1c7573613cbb8dcac83ba5d5fc55ca607cf535dd11918d619aa6fd7ad&',
-      url: 'https://discord.gg/FUEHs7RCqz'
+      url: 'https://discord.gg/X6RT5VdJPQ'
     })
     .setDescription(queue.map((song, index) => `**${index + 1}.** ${song.searchQuery}`).join('\n'));
 
@@ -79,21 +78,20 @@ async function playNextSong(connection, message) {
     if (!connection.destroyed) {
       connection.destroy();
     }
-   const embed = new EmbedBuilder()
- .setAuthor({
-          name: 'Queue Empty',
+    const embed = new EmbedBuilder()
+      .setAuthor({
+          name: 'Senarai Main Kosong',
           iconURL: 'https://cdn.discordapp.com/attachments/1223544847047065662/1224631831178248347/4381-anouncements-animated.gif?ex=661e3245&is=660bbd45&hm=25f3b77985241a4612a8f4946a4631f8add618d9f36a0d9157fb4821aa6d2a0e&',
-          url: 'https://discord.gg/FUEHs7RCqz'
+          url: 'https://discord.gg/X6RT5VdJPQ'
         })
-     .setDescription('**Oops! The queue is empty. Our bot is taking a break. See you later!**')
-
+      .setDescription('**Oops! Senarai main kosong. Bot kami sedang berehat. Jumpa nanti!**')
       .setColor('#ffcc00');
     message.reply({ embeds: [embed] });
   }
 }
 
 async function playSong(connection, searchQuery, message) {
-  createPlayer(); 
+  createPlayer();
 
   player.pause();
 
@@ -102,11 +100,11 @@ async function playSong(connection, searchQuery, message) {
     searchResult = await YouTubeSearch(searchQuery, youtubeSearchOptions);
   } catch (error) {
     console.error(error);
-    return message.reply('❌ There was an error searching for the song.');
+    return message.reply('❌ Terdapat ralat semasa mencari lagu.');
   }
 
   if (!searchResult || !searchResult.results.length) {
-    return message.reply('❌ No search results found for the provided query.');
+    return message.reply('❌ Tiada hasil carian untuk query yang diberikan.');
   }
 
   const video = searchResult.results[0];
@@ -127,40 +125,40 @@ async function playSong(connection, searchQuery, message) {
 
     const embed = new EmbedBuilder()
       .setAuthor({
-        name: 'Currently playing a Track',
+        name: 'Kini Memainkan Track',
         iconURL: 'https://cdn.discordapp.com/attachments/1140841446228897932/1144671132948103208/giphy.gif', 
-        url: 'https://discord.gg/FUEHs7RCqz'
+        url: 'https://discord.gg/X6RT5VdJPQ'
       })
-      .setDescription(`\n ‎ \n▶️ **Details :** [${video.title}](${youtubeLink})\n▶️ **Enjoy the Ultimate YouTube Music Experience ** \n▶️ **If link breaks playback try to give query**`)
+      .setDescription(`\n ‎ \n▶️ **Butiran :** [${video.title}](${youtubeLink})\n▶️ **Nikmati Pengalaman Muzik YouTube Terbaik ** \n▶️ **Jika pautan rosak, cuba berikan query sekali lagi**`)
       .setImage(video.thumbnails.high.url) 
       .setColor('#2b71ec')
-      .setFooter({ text: 'More info - Use Help command Default : -help' });
+      .setFooter({ text: 'Maklumat lanjut - Gunakan perintah: -help' });
 
     const row = new ActionRowBuilder()
       .addComponents(
         new ButtonBuilder()
           .setCustomId('pause')
-          .setLabel('Pause')
+          .setLabel('Jeda')
           .setEmoji('⏸️')
-           .setStyle(ButtonStyle.Primary),
+          .setStyle(ButtonStyle.Primary),
         new ButtonBuilder()
           .setCustomId('resume')
-          .setLabel('Resume')
-        .setEmoji('▶️')
-           .setStyle(ButtonStyle.Primary),
+          .setLabel('Sambung')
+          .setEmoji('▶️')
+          .setStyle(ButtonStyle.Primary),
         new ButtonBuilder()
           .setCustomId('skip')
-          .setLabel('Skip')
-         .setEmoji('⏭️')
-           .setStyle(ButtonStyle.Primary),
+          .setLabel('Lewat')
+          .setEmoji('⏭️')
+          .setStyle(ButtonStyle.Primary),
         new ButtonBuilder()  
         .setCustomId('display_queue')
-        .setLabel('Queue')
+        .setLabel('Senarai Main')
         .setEmoji('📄')
         .setStyle(ButtonStyle.Primary),
         new ButtonBuilder()  
-        .setLabel('Link')
-         .setURL(youtubeLink)
+        .setLabel('Pautan')
+        .setURL(youtubeLink)
         .setStyle(ButtonStyle.Link)      
       );
 
@@ -184,20 +182,20 @@ async function playSong(connection, searchQuery, message) {
           await interaction.deferUpdate();
           break;
         case 'resume':
-            resumePlayback();
+          resumePlayback();
           await interaction.deferUpdate();
           break;
         case 'skip':
           if (member.voice.channel && queue.length > 0) {
             playNextSong(currentConnection, currentMessage);
-             const embed = new EmbedBuilder()
-           .setColor('#2b71ec')
-     .setAuthor({
-          name: 'Skipped Song!',
-          iconURL: 'https://cdn.discordapp.com/attachments/1175488636033175602/1175488721253052426/right-chevron-.png?ex=656b6a2e&is=6558f52e&hm=50647a73aa51cb35f25eba52055c7b4a1b56bbf3a6d13adc15b52dc533236956&',
-          url: 'https://discord.gg/FUEHs7RCqz'
-        })
-          .setDescription('**Let\'s move on to the next beat...**');
+            const embed = new EmbedBuilder()
+              .setColor('#2b71ec')
+              .setAuthor({
+                name: 'Lagu Dilewati!',
+                iconURL: 'https://cdn.discordapp.com/attachments/1175488636033175602/1175488721253052426/right-chevron-.png?ex=656b6a2e&is=6558f52e&hm=50647a73aa51cb35f25eba52055c7b4a1b56bbf3a6d13adc15b52dc533236956&',
+                url: 'https://discord.gg/X6RT5VdJPQ'
+              })
+              .setDescription('**Mari kita bergerak ke rentak seterusnya...**');
             interaction.reply({ embeds: [embed] });
           } else {
             interaction.deferUpdate();
@@ -208,12 +206,12 @@ async function playSong(connection, searchQuery, message) {
           await interaction.deferUpdate();
           break;
         default:
-          interaction.reply('❌ Invalid interaction.');
+          interaction.reply('❌ Respon tidak sah.');
       }
     });
     setTimeout(() => {
-        row.components.forEach(button => button.setDisabled(true));
-        replyMessage.edit({ components: [row] });
+      row.components.forEach(button => button.setDisabled(true));
+      replyMessage.edit({ components: [row] });
     }, 180000);
     collector.on('end', () => console.log('Button interaction collector ended.'));
   } catch (error) {
@@ -221,7 +219,7 @@ async function playSong(connection, searchQuery, message) {
     if (!connection.destroyed) {
       connection.destroy();
     }
-    message.reply('🔴 There was an error playing the music.');
+    message.reply('🔴 Terdapat ralat semasa memainkan muzik.');
   }
 }
 
@@ -234,22 +232,22 @@ function pausePlayback() {
 
     const embed = new EmbedBuilder()
       .setAuthor({
-          name: 'Playback Paused!',
+          name: 'Pemutaran Dijeda!',
           iconURL: 'https://cdn.discordapp.com/attachments/1175488636033175602/1175488720519049337/pause.png?ex=656b6a2e&is=6558f52e&hm=6695d8141e37330b5426f146ec6705243f497f95f08916a40c1db582c6e07d7e&',
-          url: 'https://discord.gg/FUEHs7RCqz'
+          url: 'https://discord.gg/X6RT5VdJPQ'
         })
-      .setDescription('**Halt the beats! Music taking a break..**')
+      .setDescription('**Hentikan rentak! Muzik sedang berehat..**')
       .setColor('#2b71ec');
 
     currentMessage.reply({ embeds: [embed] });
   } else {
     const embed = new EmbedBuilder()
- .setAuthor({
-          name: 'Attention',
+      .setAuthor({
+          name: 'Perhatian',
           iconURL: 'https://cdn.discordapp.com/attachments/1223544847047065662/1224631171766292500/9596-wrong.gif?ex=661e31a7&is=660bbca7&hm=016645a3d582d6b93c8447a02cd7b1e7923b3162127336fdc0b23b96b5e8ab4b&',
-          url: 'https://discord.gg/FUEHs7RCqz'
+          url: 'https://discord.gg/X6RT5VdJPQ'
         })
-      .setDescription('**The bot is not currently playing any song.**')
+      .setDescription('**Bot tidak memainkan sebarang lagu.**')
       .setColor('#ff0000');
     currentMessage.reply({ embeds: [embed] });
   }
@@ -262,21 +260,21 @@ function resumePlayback() {
 
     const embed = new EmbedBuilder()
        .setAuthor({
-          name: 'Playback Resumed!',
+          name: 'Pemutaran Diteruskan!',
           iconURL: 'https://cdn.discordapp.com/attachments/1175488636033175602/1175488720762310757/play.png?ex=656b6a2e&is=6558f52e&hm=ae4f01060fe8ae93f062d6574ef064ca0f6b4cf40b172f1bd54d8d405809c7df&',
-          url: 'https://discord.gg/FUEHs7RCqz'
+          url: 'https://discord.gg/X6RT5VdJPQ'
         })
-      .setDescription('**Back in action! Let the beats roll..**')
+      .setDescription('**Kembali beraksi! Biarkan rentak berputar..**')
       .setColor('#2b71ec');
     currentMessage.reply({ embeds: [embed] });
   } else {
     const embed = new EmbedBuilder()
       .setAuthor({
-          name: 'Attention',
+          name: 'Perhatian',
           iconURL: 'https://cdn.discordapp.com/attachments/1223544847047065662/1224631171766292500/9596-wrong.gif?ex=661e31a7&is=660bbca7&hm=6645a3d582d6b93c8447a02cd7b1e7923b316212017336fdc0b23b96b5e8ab4b&',
-          url: 'https://discord.gg/FUEHs7RCqz'
+          url: 'https://discord.gg/X6RT5VdJPQ'
         })
-      .setDescription('**The bot is not currently paused.**')
+      .setDescription('**Bot tidak dijeda.**')
       .setColor('#ff0000');
 
     currentMessage.reply({ embeds: [embed] });
@@ -286,16 +284,17 @@ function resumePlayback() {
 
 module.exports = {
   name: 'play',
-  description: 'Play music from YouTube',
+  aliases: ['p', 'main'],
+  description: 'Mainkan muzik dari YouTube',
   execute: async (message, args) => {
     const voiceChannel = message.member.voice.channel;
     if (!voiceChannel) {
-      return message.reply('**⚠️ You need to be in a voice channel!**');
+      return message.reply('**⚠️ Anda perlu berada dalam Voice Channel!**');
     }
 
     const searchQuery = args.join(' ');
     if (!searchQuery) {
-      return message.reply('**▶️ Please provide a search query!**');
+      return message.reply('**▶️ Sila berikan query carian!**');
     }
 
     const connection = joinVoiceChannel({
@@ -312,13 +311,13 @@ module.exports = {
       createPlayer();
       const embed = new EmbedBuilder()
         .setAuthor({
-        name: 'Added To Queue',
-        iconURL: 'https://cdn.discordapp.com/attachments/1156866389819281418/1157218651179597884/1213-verified.gif?ex=6517cf5a&is=65167dda&hm=cf7bc8fb4414cb412587ade0af285b77569d2568214d6baab8702ddeb6c38ad5&', 
-        url: 'https://discord.gg/FUEHs7RCqz'
-    })
-        .setDescription(`**Your song has been queued up and is ready to play!**`)
+          name: 'Ditambahkan Ke Senarai Main',
+          iconURL: 'https://cdn.discordapp.com/attachments/1156866389819281418/1157218651179597884/1213-verified.gif?ex=6517cf5a&is=65167dda&hm=cf7bc8fb4414cb412587ade0af285b77569d2568214d6baab8702ddeb6c38ad5&', 
+          url: 'https://discord.gg/X6RT5VdJPQ'
+        })
+        .setDescription(`**Lagu anda telah ditambah ke senarai main dan sedia dimainkan!**`)
         .setColor('#14bdff')
-        .setFooter({ text: 'Use ?queue for more Information' });
+        .setFooter({ text: 'Gunakan -queue untuk maklumat lanjut' });
       return message.reply({ embeds: [embed] });
     }
 
