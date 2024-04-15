@@ -12,46 +12,46 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setColor('#2b71ec')
       .setAuthor({
-        name: 'Saya disini ingin membantu anda!',
+        name: 'Saya ingin bantu anda!',
         iconURL: 'https://cdn.discordapp.com/attachments/1175487983915376662/1175667506791325706/communication.png?ex=656c10b0&is=65599bb0&hm=e378f1b355a2401bcab504b08a0766001d6b7c090c91ce0a7a7a87c868feb955&', 
         url: 'https://discordapp.com/users/267958390389604362'
     })
      
-      .setDescription(`__**STATS :**__\n\n> **📊 Bilangan server:** ${serverCount}\n> **🟢 Bot Ping:** ${botPing}ms\n> **👑 Dibina Oleh [BlankedWave](https://discordapp.com/users/267958390389604362)**\n\n__**COMMANDS :**__ `)
+      .setDescription(`__**STATS :**__\n\n> **📊 Bilangan Server:** ${serverCount}\n> **🟢 Bot Ping:** ${botPing}ms\n> **👑 Dibina Oleh: [BlankedWave](https://discordapp.com/users/267958390389604362)**\n\n__**COMMANDS :**__ `)
       .addFields(
         // Basic commands category
         {
-          name: '▶️  Asas',
+          name: '▶️  ❔',
           value: '`avatar`, `owner`, `support`, `invite`, `userinfo`',
           inline: true,
         },
         // Music commands category
         {
-          name: '▶️  Muzik',
+          name: '▶️  🎵',
           value: '`play`, `history`,`volume`,`pause`,`resume`,`247`',
           inline: true,
         },
         //fun category
         {
-          name: '▶️  Hiburan',
-          value: '`joke`, `meme`, `roll`',
+          name: '▶️  🎉',
+          value: '`joke`, `roll`',
           inline: true,
         },
         //image category
         {
-          name: '▶️  Gambar',
+          name: '▶️  📷',
           value: '`cat`, `dog`',
           inline: true,
         },
         //anime category
         {
-          name: '▶️  Anime',
-          value: '`-animecommands untuk maklumat lanjut`',
+          name: '▶️  📹',
+          value: '`-animecommands`',
           inline: true,
         },
         // Utility commands category
         {
-          name: '▶️  Utility',
+          name: '▶️  🔰',
           value: '`kick`, `ban`, `serverinfo`,`userinfo`, `clear`',
           inline: true,
         }
@@ -60,12 +60,12 @@ module.exports = {
       .setImage(`https://media.tenor.com/WDwFEWQxdFAAAAAi/fish.gif`);
 
     const button1 = new ButtonBuilder()
-      .setLabel('Discord')
+      .setLabel('Server')
       .setURL('https://discordapp.com/users/267958390389604362')
       .setStyle(ButtonStyle.Link);
 
     const button2 = new ButtonBuilder()
-      .setLabel('Discord Channel')
+      .setLabel('Pemilik')
       .setURL('https://discord.gg/X6RT5VdJPQ')
       .setStyle(ButtonStyle.Link);
 
