@@ -3,7 +3,7 @@ const anime = require('anime-actions');
 const db = require("../mongodb");
 module.exports = {
   name: 'stare',
-  description: 'Stare at someone!',
+  description: 'Merenung seseorang!',
   async execute(message, args) {
     const sender = message.author;
     const targetUser = message.mentions.users.first();
@@ -11,7 +11,7 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setColor('#ff9900')
-      .setDescription(`${sender} is staring at ${targetUser || 'the void'}... 👀`)
+      .setDescription(`${sender} sedang merenung ${targetUser || 'ke dalam renungan'}... 👀`)
       .setImage(stareGif);
 
     message.reply({ embeds: [embed] });
