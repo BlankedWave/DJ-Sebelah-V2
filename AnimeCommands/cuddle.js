@@ -3,7 +3,7 @@ const anime = require('anime-actions');
 const db = require("../mongodb");
 module.exports = {
   name: 'cuddle',
-  description: 'Cuddle with someone!',
+  description: 'Peluk seseorang!',
   async execute(message, args) {
     const sender = message.author;
     const targetUser = message.mentions.users.first();
@@ -11,7 +11,7 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setColor('#ff9900')
-      .setDescription(`${sender} cuddles ${targetUser || 'with the air'}! 🤗`)
+      .setDescription(`${sender} tengah peluk ${targetUser || 'hantu halimunan '}! 🤗`)
       .setImage(cuddleGif);
 
     message.reply({ embeds: [embed] });
