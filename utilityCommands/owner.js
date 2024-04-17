@@ -8,32 +8,12 @@ module.exports = {
         const DiscordGuild = 'https://discord.gg/X6RT5VdJPQ';
         const embed = new EmbedBuilder()
             .setColor('#FFFFFF')
-            .setTitle(' 🫅 Owner Info')
-            .setDescription(`__**About me**__:\n 🤖 My name is Muhammad Aqil Ismail, and I am a man who lost his own purposes in life.\n ❤️ [BlankedWave](${DiscordLink})\n 💙 [Discord Sebelah](${DiscordGuild})`)
+            .setTitle(' 🫅 Info Pemilik')
+            .setDescription(`__**Tentang Saya**__:\n 🤖 Hai semua! Saya Muhammad Aqil Ismail, manusia yang sibuk mencari tujuan hidupnya. Kadang-kadang, saya rasa seperti bot yang tersesat di dalam alam siber! Tetapi jangan risau, saya masih ada untuk memberi keceriaan di Discord!\n ❤️ [BlankedWave](${DiscordLink})\n 💙 [Discord Sebelah](${DiscordGuild})`)
+
             .setTimestamp();
 
 
         message.reply({ embeds: [embed] });
     },
 };
-
-/*
-
-   MADE BY RTX!! FEEL FREE TO USE ANY PART OF CODE
-
-  ██████╗░████████╗██╗░░██╗           
-  ██╔══██╗╚══██╔══╝╚██╗██╔╝          
-  ██████╔╝░░░██║░░░░╚███╔╝░          
-  ██╔══██╗░░░██║░░░░██╔██╗░          
-  ██║░░██║░░░██║░░░██╔╝╚██╗          
-  ╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝          
-
-   FOR EMOJIS EITHER YOU CAN EDIT OR JOIN OUR DISCORD SERVER 
-   SO WE ADD BOT TO OUR SERVER SO YOU GET ANIMATED EMOJIS.
-
-   DISCORD SERVER : https://discord.gg/FUEHs7RCqz
-   YOUTUBE : https://www.youtube.com/channel/UCPbAvYWBgnYhliJa1BIrv0A
-
-   FOR HELP CONTACT ME ON DISCORD
-   ## Contact    [ DISCORD SERVER :  https://discord.gg/c4kaW2sSbm ]
-*/
