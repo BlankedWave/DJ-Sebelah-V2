@@ -15,7 +15,7 @@ module.exports = {
         server.members.fetch(server.ownerId).then((owner) => {
         const embed = new EmbedBuilder()
         .setColor('#FFFFFF')
-        .setTitle('📊 Server Info')
+        .setTitle('📊 Maklumat Server')
         .setThumbnail(server.iconURL({ format: 'png', dynamic: true, size: 1024 }))
         .setDescription(`
             **Nama Server:** ${server.name}
