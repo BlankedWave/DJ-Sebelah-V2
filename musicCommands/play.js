@@ -15,6 +15,7 @@ const config = require('../config.json');
 const youtubeAPIKey = config.youtubeAPIKey;
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { InteractionCollector } = require('discord.js');
+const { updateHistory, getSearchHistory } = require('./historyUtils');
 
 let isPaused = false;
 const youtubeSearchOptions = {
@@ -281,6 +282,31 @@ function resumePlayback() {
   }
 }
 
+const autoplayThreshold = 5; // Adjust the threshold as needed
+
+async function autoplay(connection, message) {
+  const searchHistory = getSearchHistory();
+  
+  if (searchHistory.length < autoplayThreshold) {
+    return message.reply('Search history is not sufficient for autoplay.');
+  }
+
+  const lastVideo = searchHistory[searchHistory.length - 1];
+  const autoplaySearchQuery = lastVideo.title; // Use the title of the last video as the autoplay search query
+
+  const embed = new EmbedBuilder()
+    .setAuthor({
+      name: 'Autoplay',
+      iconURL: 'https://cdn.discordapp.com/attachments/1175488636033175602/1175488721001398333/autoplay.png?ex=656b6a2e&is=6558f52e&hm=7573613cbb8dcac83ba5d5fc55ca607cf535dd117b4492b1c918d619aa6fd7ad&',
+      url: 'https://discord.gg/X6RT5VdJPQ'
+    })
+    .setDescription(`**Searching for the next song...**`)
+    .setColor('#2b71ec');
+
+  message.reply({ embeds: [embed] });
+
+  await playSong(connection, autoplaySearchQuery, message);
+}
 
 module.exports = {
   name: 'play',
@@ -340,7 +366,11 @@ module.exports = {
     message.client.on('voiceStateUpdate', listener);
 
     await playSong(connection, searchQuery, message);
+
+
+    
   },
+  autoplay,
   queue,
   dequeue,
   playNextSong,
