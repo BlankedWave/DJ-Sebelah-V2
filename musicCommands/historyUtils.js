@@ -1,22 +1,20 @@
+const fs = require('fs');
 const db = require("../mongodb");
+const getHistory = () => {
+  let history = [];
 
-const getHistory = async () => {
-  try {
-    const history = await db.collection("history").find().toArray();
-    return history;
-  } catch (error) {
-    console.error("Error getting history:", error);
-    return [];
+  if (fs.existsSync('./history.json')) {
+    const data = fs.readFileSync('./history.json');
+    history = JSON.parse(data);
   }
+
+  return history;
 };
 
-const updateHistory = async (song) => {
-  try {
-    await db.collection("history").insertOne(song);
-    console.log("History updated successfully.");
-  } catch (error) {
-    console.error("Error updating history:", error);
-  }
+const updateHistory = (song) => {
+  let history = getHistory();
+  history.push(song);
+  fs.writeFileSync('./history.json', JSON.stringify(history, null, 2));
 };
 
 module.exports = {
