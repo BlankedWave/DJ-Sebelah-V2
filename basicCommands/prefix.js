@@ -33,44 +33,22 @@ module.exports = {
     description: 'Change the prefix for the bot',
     execute(message, args) {
         if (!message.member.permissions.has('ADMINISTRATOR')) {
-            return message.reply("❌ You don't have permission to use this command.");
+            return message.reply("❌ Anda tidak mempunyai hak untuk menggunakan command ini.");
         }
 
         const newPrefix = args[0];
         if (!newPrefix) {
-            return message.reply('Please provide a new prefix ❌');
+            return message.reply('Sila tetapkan prefix baharu ❌');
         }
 
         savePrefix(newPrefix);
 
         const embed = new EmbedBuilder()
             .setColor('#00FF00')
-            .setTitle('Prefix Changed ✅')
-            .setDescription(`▶️ The prefix has been changed to: ${newPrefix}`)
+            .setTitle('Prefix telah diubah ✅')
+            .setDescription(`▶️ Prefix telah diubah kepada: ${newPrefix}`)
             .setTimestamp();
 
         message.reply({ embeds: [embed] });
     },
 };
-
-
-/*
-
-   MADE BY RTX!! FEEL FREE TO USE ANY PART OF CODE
-
-  ██████╗░████████╗██╗░░██╗           
-  ██╔══██╗╚══██╔══╝╚██╗██╔╝          
-  ██████╔╝░░░██║░░░░╚███╔╝░          
-  ██╔══██╗░░░██║░░░░██╔██╗░          
-  ██║░░██║░░░██║░░░██╔╝╚██╗          
-  ╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝          
-
-   FOR EMOJIS EITHER YOU CAN EDIT OR JOIN OUR DISCORD SERVER 
-   SO WE ADD BOT TO OUR SERVER SO YOU GET ANIMATED EMOJIS.
-
-   DISCORD SERVER : https://discord.gg/FUEHs7RCqz
-   YOUTUBE : https://www.youtube.com/channel/UCPbAvYWBgnYhliJa1BIrv0A
-
-   FOR HELP CONTACT ME ON DISCORD
-   ## Contact    [ DISCORD SERVER :  https://discord.gg/c4kaW2sSbm ]
-*/
